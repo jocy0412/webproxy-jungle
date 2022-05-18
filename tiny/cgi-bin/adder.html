@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div>
+        <div>
+            <h1><b>adder program</b></h1>
+        </div>
+        <div>
+            <h3>first parameter</h3>
+            <input id="a" type="text">
+        </div>
+        <div>
+            <h3>second parameter</h3>
+            <input id="b" type="text">
+        </div>
+        <div>
+            <button onclick="submit()">submit</button>
+        </div>
+
+        <div id="result"></div>
+    </div>
+    <script>
+        function submit() {
+            let a = $('#a').val()
+            let b = $('#b').val()
+
+            $.ajax({
+            type: "GET",
+            url: "/cgi-bin/adder?" + a + "&" + b,
+            data: {},
+            success: function (response) {
+                let tmp = `${response}`;
+                $('#result').empty();
+              $('#result').append(tmp);
+            },
+          })
+        }
+    </script>
+</body>
+</html>
